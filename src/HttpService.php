@@ -53,7 +53,7 @@ class HttpService
      */
     public function setHost(string $host)
     {
-        $this->host = Config::get('services.' . $host);
+        $this->host = Config::get('hosts.' . $host);
 
         return $this;
     }
