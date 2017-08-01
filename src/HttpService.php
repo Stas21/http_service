@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Config;
 /**
  * Class HttpService
  *
- * @package App\Services
+ * @package N1X0N\HttpService\Services
  */
 class HttpService
 {
