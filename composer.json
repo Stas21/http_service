@@ -1,14 +1,12 @@
 {
     "name": "stas21/http_service",
     "description": "Http service for Laravel",
-    "license": "MIT",
     "authors": [
         {
             "name": "Stas Khort"
         }
     ],
     "type": "library",
-    "minimum-stability": "dev",
     "require": {
         "illuminate/support": "^5.4",
         "guzzle/http": "^3.9"
@@ -17,5 +15,8 @@
         "psr-4": {
             "Stas21\\HttpService\\": "src/"
         }
-    }
+    },
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
