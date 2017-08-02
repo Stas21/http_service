@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'test' => env('SERVICE_USERS'),
+    'user' => env('SERVICE_USER'),
 ];

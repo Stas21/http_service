@@ -10,10 +10,15 @@ use Illuminate\Support\Facades\Config;
 /**
  * Class HttpService
  *
- * @package N1X0N\HttpService\Services
+ * @package N1X0N\HttpService
  */
 class HttpService
 {
+    /**
+     * @var string
+     */
+    private $host;
+
     /**
      * @var array
      */
@@ -42,20 +47,31 @@ class HttpService
     private $client;
 
     /**
-     * @var
-     */
-    private $host;
-
-    /**
-     * @param string $url
+     * Set host.
+     *
+     * @param string $host
      *
      * @return $this
      */
     public function setHost(string $host)
     {
-        $this->host = Config::get('hosts.' . $host);
+        $this->host = Config::get('hosts.' . $host) || $host;
 
         return $this;
+    }
+
+    /**
+     * Get host.
+     *
+     * @return string
+     * @throws Exception
+     */
+    public function getHost(): string
+    {
+        if(!$this->host) {
+            Throw new Exception('You need to set the host');
+        }
+        return $this->host;
     }
 
     /**
@@ -220,5 +236,15 @@ class HttpService
             'body'   => json_decode($this->response->getBody()->getContents()),
             'status' => $this->response->getStatusCode(),
         ];
+    }
+
+    /**
+     * Get headers.
+     *
+     * @return array
+     */
+    public function getHeaders()
+    {
+        return $this->headers;
     }
 }
