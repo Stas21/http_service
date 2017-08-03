@@ -2,8 +2,8 @@
 
 namespace Tests;
 
-use Illuminate\Support\Facades\Config;
 use N1X0N\HttpService\HttpService;
+use Illuminate\Config\Repository as Config;
 
 class HttpServiceTest extends TestCase
 {
@@ -22,7 +22,9 @@ class HttpServiceTest extends TestCase
         $http_service->setHost('user');
         $http_host = $http_service->getHost();
 
-        $host = Config::get('host.user');
+        $config = new Config();
+        $host = $config->get('hosts.user');
+        dd($host, $http_host);
         $this->assertEquals($host, $http_host);
     }
 }
